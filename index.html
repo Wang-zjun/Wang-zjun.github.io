@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2025届234班毕业纪念册</title>
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -291,6 +287,98 @@
             align-items: center;
             justify-content: center;
             font-size: 0.8rem;
+        }
+
+        /* 图片查看模态框 */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: none;
+            border: none;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--accent);
+        }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .nav-arrow:hover {
+            background: rgba(74, 111, 165, 0.8);
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        .image-info {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-size: 1.2rem;
+            padding: 10px;
         }
 
         /* 班级成员页面 */
@@ -862,28 +950,12 @@
             .page-title {
                 font-size: 1.8rem;
             }
-        }
-        
-        /* 加载指示器 */
-        .loader {
-            display: none;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .loader .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-radius: 50%;
-            border-top: 4px solid var(--primary);
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            
+            .nav-arrow {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -969,7 +1041,7 @@
                 <h2 class="page-title">毕业相册</h2>
                 
                 <div class="card">
-                    <p>这里保存了我们班级的珍贵瞬间，点击图片可以放大查看。共有56张照片记录了我们美好的青春时光。</p>
+                    <p>这里保存了我们班级的珍贵瞬间，点击图片可以放大查看。</p>
                     <div style="display: flex; align-items: center; margin-top: 15px; gap: 10px;">
                         <div style="width: 30px; height: 30px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">56</div>
                         <span>张照片记录我们的青春</span>
@@ -986,7 +1058,7 @@
                 <h2 class="page-title">人物回忆</h2>
                 
                 <div class="card">
-                    <p>这里是我们234班全体成员的名单和职位，点击名字可以查看详细信息。</p>
+                    <p>这里是我们234班全体成员的名单</p>
                 </div>
                 
                 <div class="members-container">
@@ -1005,7 +1077,7 @@
                 <div class="wishes-container">
                     <div class="wish-card">
                         <div class="wish-content">
-                            四年时光匆匆而过，留下的是满满的回忆和珍贵的友谊。愿大家前程似锦，未来可期！无论走到哪里，都不要忘记234班这个温暖的大家庭。
+                            三年时光匆匆而过，留下的是满满的回忆和珍贵的友谊。愿大家前程似锦，未来可期！无论走到哪里，都不要忘记234班这个温暖的大家庭。
                         </div>
                         <div class="wish-author">—— 王梓钧</div>
                     </div>
@@ -1019,14 +1091,14 @@
                     
                     <div class="wish-card">
                         <div class="wish-content">
-                            感谢四年来老师们的谆谆教诲和同学们的陪伴支持。毕业不是结束，而是新的开始。愿我们带着勇气和智慧，在人生的舞台上绽放光彩！
+                            感谢三年来老师们的谆谆教诲和同学们的陪伴支持。毕业不是结束，而是新的开始。愿我们带着勇气和智慧，在人生的舞台上绽放光彩！
                         </div>
                         <div class="wish-author">—— 不愿意透露姓名的同学</div>
                     </div>
                     
                     <div class="wish-card">
                         <div class="wish-content">
-                            四年的点点滴滴将成为我生命中最珍贵的记忆。愿我们都能保持初心，勇敢追梦。无论未来遇到什么困难，都要记得：234班永远是你的后盾！
+                            三年的点点滴滴将成为我生命中最珍贵的记忆。愿我们都能保持初心，勇敢追梦。无论未来遇到什么困难，都要记得：234班永远是你的后盾！
                         </div>
                         <div class="wish-author">—— 不愿意透露姓名的同学</div>
                     </div>
@@ -1040,7 +1112,7 @@
                     
                     <div class="wish-card">
                         <div class="wish-content">
-                            大学四年，感谢有你们。愿此去前程似锦，再相逢依旧如故。让我们各自努力，顶峰相见！
+                            初中三年，感谢有你们。愿此去前程似锦，再相逢依旧如故。让我们各自努力，顶峰相见！
                         </div>
                         <div class="wish-author">—— 不愿意透露姓名的同学</div>
                     </div>
@@ -1071,11 +1143,6 @@
                             <textarea id="commentText" placeholder="写下你的毕业感言或祝福..."></textarea>
                         </div>
                         <button id="submitComment">发布留言</button>
-                    </div>
-                    
-                    <div class="loader" id="commentLoader">
-                        <div class="spinner"></div>
-                        <p>加载评论中...</p>
                     </div>
                     
                     <div class="comment-list" id="commentList">
@@ -1138,25 +1205,50 @@
     </div>
 
     <script>
-        // Firebase配置 - 替换为您自己的配置
-        const firebaseConfig = {
-            apiKey: "AIzaSyD8DvXqQbq6k0nVJ2Lg7z1Y0ZbXQdT1e2w",
-            authDomain: "class2025-234.firebaseapp.com",
-            projectId: "class2025-234",
-            storageBucket: "class2025-234.appspot.com",
-            messagingSenderId: "123456789012",
-            appId: "1:123456789012:web:abcdef1234567890"
-        };
-        
-        // 初始化Firebase
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        
         // 更新后的班级成员数据
         const classMembers = [
             { name: "王梓钧", role: "班长 轮值纪委 数学课代表", isAdmin: false },
             { name: "牛悦嘉", role: "副班长 轮值纪委 政治课代表 化学课代表", isAdmin: false },
-            // ...其他成员保持不变...
+            { name: "王若兮", role: "学习委员 轮值纪委", isAdmin: false },
+            { name: "王岍沐", role: "卫生委员 英语课代表", isAdmin: false },
+            { name: "张家语", role: "卫生委员 历史课代表", isAdmin: false },
+            { name: "吴文蕊", role: "语文课代表", isAdmin: false },
+            { name: "李家乐", role: "化学课代表", isAdmin: false },
+            { name: "杨涵予", role: "生物课代表", isAdmin: false },
+            { name: "牛晨坤", role: "地理课代表", isAdmin: false },
+            { name: "王梦涵", role: "历史课代表", isAdmin: false },
+            { name: "安梦洁", role: "化学课代表", isAdmin: false },
+            { name: "金钰莹", role: "化学课代表", isAdmin: false },
+            { name: "杨子昌", role: "", isAdmin: false },
+            { name: "赵予熙", role: "", isAdmin: false },
+            { name: "马梓淩", role: "", isAdmin: false },
+            { name: "彭佳豪", role: "", isAdmin: false },
+            { name: "耿榆婷", role: "", isAdmin: false },
+            { name: "黄波文", role: "", isAdmin: false },
+            { name: "胡宇轩", role: "", isAdmin: false },
+            { name: "赵瑞卿", role: "", isAdmin: false },
+            { name: "赵欣怡", role: "", isAdmin: false },
+            { name: "朱逸璇", role: "", isAdmin: false },
+            { name: "武梦圆", role: "", isAdmin: false },
+            { name: "雷柯馨", role: "", isAdmin: false },
+            { name: "梁铭扬", role: "", isAdmin: false },
+            { name: "薛玉臻", role: "", isAdmin: false },
+            { name: "任淑蔓", role: "", isAdmin: false },
+            { name: "何旭杰", role: "", isAdmin: false },
+            { name: "盖梦涛", role: "", isAdmin: false },
+            { name: "白子文", role: "", isAdmin: false },
+            { name: "刘佳妮", role: "", isAdmin: false },
+            { name: "张钰璇", role: "", isAdmin: false },
+            { name: "化漾文", role: "", isAdmin: false },
+            { name: "王青艳", role: "", isAdmin: false },
+            { name: "郭宇帆", role: "", isAdmin: false },
+            { name: "王旭东", role: "", isAdmin: false },
+            { name: "闫筱磊", role: "", isAdmin: false },
+            { name: "高靖茹", role: "", isAdmin: false },
+            { name: "侯信鹏", role: "", isAdmin: false },
+            { name: "琚可馨", role: "", isAdmin: false },
+            { name: "张潺耀", role: "", isAdmin: false },
+            { name: "曹梦旭", role: "", isAdmin: false }
         ];
 
         // 图片数据
@@ -1353,45 +1445,27 @@
         const commentForm = document.getElementById('submitComment');
         const commentText = document.getElementById('commentText');
         const commentList = document.getElementById('commentList');
-        const commentLoader = document.getElementById('commentLoader');
         
-        // 显示加载指示器
-        function showLoader() {
-            commentLoader.style.display = 'block';
-            commentList.style.display = 'none';
-        }
-        
-        // 隐藏加载指示器
-        function hideLoader() {
-            commentLoader.style.display = 'none';
-            commentList.style.display = 'block';
-        }
-        
-        // 初始化评论 - 使用Firebase
+        // 初始化评论
         function initComments() {
-            showLoader();
+            let comments = JSON.parse(localStorage.getItem('comments')) || [];
             
-            // 从Firebase获取评论
-            db.collection("comments")
-                .orderBy("timestamp", "desc")
-                .get()
-                .then((querySnapshot) => {
-                    const comments = [];
-                    querySnapshot.forEach((doc) => {
-                        comments.push({
-                            id: doc.id,
-                            ...doc.data()
-                        });
-                    });
-                    
-                    renderComments(comments);
-                    hideLoader();
-                })
-                .catch((error) => {
-                    console.error("获取评论出错: ", error);
-                    hideLoader();
-                    commentList.innerHTML = '<div class="card">评论加载失败，请刷新页面重试</div>';
-                });
+            // 如果没有评论，添加一个示例评论
+            if (comments.length === 0) {
+                comments = [
+                    {
+                        id: Date.now(),
+                        author: "王梓钧",
+                        content: "欢迎大家来到我们的毕业纪念网站！在这里留下你的祝福和回忆吧！",
+                        timestamp: new Date().toISOString(),
+                        isTop: true,
+                        replies: []
+                    }
+                ];
+                localStorage.setItem('comments', JSON.stringify(comments));
+            }
+            
+            renderComments(comments);
         }
         
         // 渲染评论
@@ -1403,7 +1477,17 @@
                 return;
             }
             
-            comments.forEach(comment => {
+            // 分离置顶评论和普通评论
+            const topComments = comments.filter(c => c.isTop);
+            const normalComments = comments.filter(c => !c.isTop);
+            
+            // 按时间倒序排列普通评论
+            normalComments.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            // 合并评论（置顶在前）
+            const sortedComments = [...topComments, ...normalComments];
+            
+            sortedComments.forEach(comment => {
                 const commentEl = document.createElement('div');
                 commentEl.className = `comment ${comment.isTop ? 'top-comment' : ''}`;
                 commentEl.dataset.id = comment.id;
@@ -1535,76 +1619,58 @@
                 return;
             }
             
-            // 添加到Firebase
-            db.collection("comments").add({
+            const comments = JSON.parse(localStorage.getItem('comments')) || [];
+            const newComment = {
+                id: Date.now(),
                 author: currentUser,
                 content: content,
                 timestamp: new Date().toISOString(),
                 isTop: false,
                 replies: []
-            })
-            .then(() => {
-                commentText.value = '';
-                initComments(); // 刷新评论列表
-            })
-            .catch((error) => {
-                console.error("添加评论出错: ", error);
-                alert('评论发布失败，请重试');
-            });
+            };
+            
+            comments.push(newComment);
+            localStorage.setItem('comments', JSON.stringify(comments));
+            
+            commentText.value = '';
+            renderComments(comments);
         });
         
         // 删除评论
         function deleteComment(commentId) {
             if (!confirm('确定要删除这条留言吗？')) return;
             
-            db.collection("comments").doc(commentId).delete()
-                .then(() => {
-                    initComments(); // 刷新评论列表
-                })
-                .catch((error) => {
-                    console.error("删除评论出错: ", error);
-                    alert('删除失败，请重试');
-                });
+            const comments = JSON.parse(localStorage.getItem('comments')) || [];
+            const newComments = comments.filter(c => c.id != commentId);
+            localStorage.setItem('comments', JSON.stringify(newComments));
+            renderComments(newComments);
         }
         
         // 编辑评论
         function editComment(commentId) {
-            const newContent = prompt('修改评论内容：');
+            const comments = JSON.parse(localStorage.getItem('comments')) || [];
+            const comment = comments.find(c => c.id == commentId);
+            
+            if (!comment) return;
+            
+            const newContent = prompt('修改评论内容：', comment.content);
             if (newContent === null || newContent.trim() === '') return;
             
-            db.collection("comments").doc(commentId).update({
-                content: newContent.trim()
-            })
-            .then(() => {
-                initComments(); // 刷新评论列表
-            })
-            .catch((error) => {
-                console.error("编辑评论出错: ", error);
-                alert('编辑失败，请重试');
-            });
+            comment.content = newContent.trim();
+            localStorage.setItem('comments', JSON.stringify(comments));
+            renderComments(comments);
         }
         
         // 置顶/取消置顶评论
         function toggleTopComment(commentId) {
-            const comments = document.querySelectorAll('.comment');
-            let isTop = false;
+            const comments = JSON.parse(localStorage.getItem('comments')) || [];
+            const comment = comments.find(c => c.id == commentId);
             
-            comments.forEach(comment => {
-                if (comment.dataset.id === commentId) {
-                    isTop = comment.classList.contains('top-comment');
-                }
-            });
+            if (!comment) return;
             
-            db.collection("comments").doc(commentId).update({
-                isTop: !isTop
-            })
-            .then(() => {
-                initComments(); // 刷新评论列表
-            })
-            .catch((error) => {
-                console.error("更新置顶状态出错: ", error);
-                alert('操作失败，请重试');
-            });
+            comment.isTop = !comment.isTop;
+            localStorage.setItem('comments', JSON.stringify(comments));
+            renderComments(comments);
         }
         
         // 添加回复
@@ -1616,49 +1682,36 @@
                 return;
             }
             
-            const newReply = {
-                id: Date.now().toString(),
+            const comments = JSON.parse(localStorage.getItem('comments')) || [];
+            const comment = comments.find(c => c.id == commentId);
+            
+            if (!comment) return;
+            
+            if (!comment.replies) comment.replies = [];
+            
+            comment.replies.push({
+                id: Date.now(),
                 author: currentUser,
                 content: content,
                 timestamp: new Date().toISOString()
-            };
-            
-            db.collection("comments").doc(commentId).update({
-                replies: firebase.firestore.FieldValue.arrayUnion(newReply)
-            })
-            .then(() => {
-                initComments(); // 刷新评论列表
-            })
-            .catch((error) => {
-                console.error("添加回复出错: ", error);
-                alert('回复发布失败，请重试');
             });
+            
+            localStorage.setItem('comments', JSON.stringify(comments));
+            renderComments(comments);
         }
         
         // 删除回复
         function deleteReply(commentId, replyId) {
             if (!confirm('确定要删除这条回复吗？')) return;
             
-            // 先获取评论
-            db.collection("comments").doc(commentId).get()
-                .then((doc) => {
-                    if (!doc.exists) return;
-                    
-                    const comment = doc.data();
-                    const replies = comment.replies.filter(reply => reply.id !== replyId);
-                    
-                    // 更新回复列表
-                    return db.collection("comments").doc(commentId).update({
-                        replies: replies
-                    });
-                })
-                .then(() => {
-                    initComments(); // 刷新评论列表
-                })
-                .catch((error) => {
-                    console.error("删除回复出错: ", error);
-                    alert('删除失败，请重试');
-                });
+            const comments = JSON.parse(localStorage.getItem('comments')) || [];
+            const comment = comments.find(c => c.id == commentId);
+            
+            if (!comment || !comment.replies) return;
+            
+            comment.replies = comment.replies.filter(r => r.id != replyId);
+            localStorage.setItem('comments', JSON.stringify(comments));
+            renderComments(comments);
         }
         
         // 获取名字首字母
