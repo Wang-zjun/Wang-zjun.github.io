@@ -1,0 +1,1758 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025届234班毕业纪念册</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #6b8cae;
+            --accent: #ff7e5f;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --text: #333;
+            --bg-light: #ffffff;
+            --bg-dark: #1e293b;
+            --card-light: #ffffff;
+            --card-dark: #334155;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        .dark-mode {
+            --text: #f1f5f9;
+            --bg-light: var(--bg-dark);
+            --card-light: var(--card-dark);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            background-color: var(--bg-light);
+            background-image: url('C:/Users/王梓钧1/Desktop/234毕业网站/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            min-height: 100vh;
+            transition: var(--transition);
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        .dark-mode body::before {
+            background: rgba(30, 41, 59, 0.85);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 顶部导航栏 */
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .dark-mode header {
+            background: rgba(30, 41, 59, 0.9);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo i {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .user-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent);
+        }
+
+        .user-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .user-btn:hover {
+            background: var(--secondary);
+        }
+
+        /* 主要内容区域 */
+        .main-content {
+            padding: 40px 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary);
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* 卡片样式 */
+        .card {
+            background: var(--card-light);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        .dark-mode .card {
+            background: var(--card-dark);
+        }
+
+        /* 公告样式 */
+        .announcement {
+            background: linear-gradient(135deg, #fff9db, #ffec99);
+            border-left: 4px solid #f59f00;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        
+        .dark-mode .announcement {
+            background: linear-gradient(135deg, #343a40, #495057);
+            border-left: 4px solid #f59f00;
+        }
+
+        .announcement h3 {
+            color: #d9480f;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .announcement ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .announcement li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        /* 相册页面 */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            height: 180px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .image-counter {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* 图片查看模态框 */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: none;
+            border: none;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--accent);
+        }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .nav-arrow:hover {
+            background: rgba(74, 111, 165, 0.8);
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        .image-info {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-size: 1.2rem;
+            padding: 10px;
+        }
+
+        /* 班级成员页面 */
+        .members-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .member-card {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: var(--card-light);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .dark-mode .member-card {
+            background: var(--card-dark);
+        }
+
+        .member-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .member-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .member-info {
+            flex-grow: 1;
+        }
+
+        .member-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .member-role {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .admin-badge {
+            background: var(--accent);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-left: 5px;
+        }
+
+        /* 祝福页面 */
+        .wishes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .wish-card {
+            padding: 20px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .dark-mode .wish-card {
+            background: linear-gradient(135deg, #334155, #1e293b);
+        }
+
+        .wish-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .wish-card::before {
+            content: """;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 4rem;
+            color: rgba(74, 111, 165, 0.2);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .wish-content {
+            padding: 20px 0 10px 20px;
+            font-style: italic;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .wish-author {
+            text-align: right;
+            font-weight: 500;
+            color: var(--primary);
+            margin-top: 15px;
+            font-style: normal;
+        }
+
+        /* 留言板页面 */
+        .comments-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .comment-form {
+            background: var(--card-light);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .dark-mode .comment-form {
+            background: var(--card-dark);
+        }
+
+        .comment-form textarea {
+            width: 100%;
+            height: 100px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            resize: vertical;
+            font-family: inherit;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            background: var(--card-light);
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .dark-mode .comment-form textarea {
+            background: var(--card-dark);
+            border-color: #475569;
+        }
+
+        .comment-form button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            display: block;
+            margin-left: auto;
+        }
+
+        .comment-form button:hover {
+            background: var(--secondary);
+        }
+
+        .comment-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .comment {
+            background: var(--card-light);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .dark-mode .comment {
+            background: var(--card-dark);
+        }
+
+        .comment.top-comment {
+            border: 2px solid var(--accent);
+            background: rgba(255, 126, 95, 0.05);
+        }
+        
+        .dark-mode .comment.top-comment {
+            background: rgba(255, 126, 95, 0.1);
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .comment-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .comment-author {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .comment-time {
+            color: #6c757d;
+            font-size: 0.85rem;
+            margin-left: auto;
+        }
+
+        .comment-content {
+            line-height: 1.6;
+            padding: 0 10px;
+            margin-bottom: 15px;
+        }
+
+        .admin-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .admin-controls button {
+            background: none;
+            border: none;
+            color: #6c757d;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .admin-controls button:hover {
+            color: var(--accent);
+        }
+
+        .reply-form {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(0,0,0,0.03);
+            border-radius: 8px;
+        }
+        
+        .dark-mode .reply-form {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .reply-form textarea {
+            width: 100%;
+            height: 60px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+            font-family: inherit;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            background: var(--card-light);
+            color: var(--text);
+        }
+        
+        .dark-mode .reply-form textarea {
+            background: var(--card-dark);
+            border-color: #475569;
+        }
+
+        .reply-form button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .reply-list {
+            margin-top: 15px;
+            padding-left: 20px;
+            border-left: 2px solid #dee2e6;
+        }
+        
+        .dark-mode .reply-list {
+            border-left: 2px solid #495057;
+        }
+
+        .reply-item {
+            padding: 10px;
+            background: rgba(0,0,0,0.02);
+            border-radius: 6px;
+            margin-bottom: 10px;
+            display: flex;
+        }
+        
+        .dark-mode .reply-item {
+            background: rgba(255,255,255,0.03);
+        }
+
+        .reply-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .reply-content {
+            flex-grow: 1;
+        }
+
+        .reply-header {
+            display: flex;
+            margin-bottom: 5px;
+        }
+
+        .reply-author {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .reply-time {
+            color: #6c757d;
+            font-size: 0.75rem;
+            margin-left: auto;
+        }
+
+        .reply-text {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .reply-controls {
+            margin-top: 5px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .reply-controls button {
+            background: none;
+            border: none;
+            color: #6c757d;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .reply-controls button:hover {
+            color: var(--accent);
+        }
+
+        /* 登录模态框 */
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-modal.active {
+            display: flex;
+        }
+
+        .login-modal-content {
+            background: var(--card-light);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: modalIn 0.4s ease;
+            position: relative;
+        }
+
+        .dark-mode .login-modal-content {
+            background: var(--card-dark);
+        }
+
+        .login-modal-header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+
+        .dark-mode .login-modal-header {
+            border-bottom: 1px solid #475569;
+        }
+
+        .login-modal-header h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .login-close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6c757d;
+            transition: var(--transition);
+        }
+
+        .login-close-modal:hover {
+            color: var(--accent);
+        }
+
+        .login-modal-body {
+            padding: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: var(--card-light);
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .dark-mode .form-group input {
+            background: var(--card-dark);
+            border-color: #475569;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.2);
+        }
+
+        .login-modal-footer {
+            padding: 15px 25px 25px;
+            text-align: center;
+        }
+
+        .login-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            width: 100%;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .login-btn:hover {
+            background: var(--secondary);
+        }
+
+        /* 页脚 */
+        footer {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px 0;
+            text-align: center;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .dark-mode footer {
+            background: rgba(30, 41, 59, 0.9);
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .copyright {
+            color: var(--text);
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+
+        /* 动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .members-container, .wishes-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .nav-arrow {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>2025届234班</span>
+                </div>
+                
+                <div class="nav-links">
+                    <a href="#" class="active" data-page="home">首页</a>
+                    <a href="#" data-page="gallery">毕业相册</a>
+                    <a href="#" data-page="members">人物回忆</a>
+                    <a href="#" data-page="wishes">逐梦远航</a>
+                    <a href="#" data-page="forum">毕业交流</a>
+                </div>
+                
+                <div class="user-controls">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="user-btn" id="loginBtn">
+                        <i class="fas fa-user"></i>
+                        <span>登录</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 首页 -->
+            <section id="home" class="page active">
+                <h2 class="page-title">毕业纪念册</h2>
+                
+                <div class="card">
+                    <h3><i class="fas fa-heart text-accent mr-2"></i> 欢迎来到我们的毕业纪念网站</h3>
+                    <p>亲爱的234班同学们，时光荏苒，转眼间我们即将告别校园，踏上新的征程。这里记录了我们共同度过的美好时光，保存了珍贵的回忆。无论未来身在何处，愿我们永远铭记这段青春岁月。</p>
+                    
+                    <div class="welcome-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                        <div class="welcome-card" style="background: linear-gradient(135deg, #4a6fa5, #6b8cae); color: white; padding: 20px; border-radius: 8px;">
+                            <i class="fas fa-users fa-2x mb-3"></i>
+                            <h4>班级成员</h4>
+                            <p>查看我们班所有成员的信息和职位</p>
+                        </div>
+                        <div class="welcome-card" style="background: linear-gradient(135deg, #ff7e5f, #feb47b); color: white; padding: 20px; border-radius: 8px;">
+                            <i class="fas fa-camera fa-2x mb-3"></i>
+                            <h4>毕业相册</h4>
+                            <p>浏览我们共同的回忆照片</p>
+                        </div>
+                        <div class="welcome-card" style="background: linear-gradient(135deg, #2c7744, #5aaf6a); color: white; padding: 20px; border-radius: 8px;">
+                            <i class="fas fa-comments fa-2x mb-3"></i>
+                            <h4>毕业交流</h4>
+                            <p>分享你的毕业感言和祝福</p>
+                        </div>
+                        <div class="welcome-card" style="background: linear-gradient(135deg, #614385, #516395); color: white; padding: 20px; border-radius: 8px;">
+                            <i class="fas fa-star fa-2x mb-3"></i>
+                            <h4>逐梦远航</h4>
+                            <p>阅读同学们的毕业寄语</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-quote-left text-accent mr-2"></i> 毕业寄语</h3>
+                    <div class="quote-slider" style="margin-top: 20px; position: relative; height: 150px; overflow: hidden;">
+                        <div class="quote active" style="position: absolute; width: 100%; text-align: center; padding: 20px; font-style: italic; font-size: 1.2rem; opacity: 1; transition: opacity 0.5s ease;">
+                            <p>"青春是一本太仓促的书，我们含着泪，一读再读。"</p>
+                            <p class="text-right mt-3">—— 席慕容</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 毕业相册页面 -->
+            <section id="gallery" class="page">
+                <h2 class="page-title">毕业相册</h2>
+                
+                <div class="card">
+                    <p>这里保存了我们班级的珍贵瞬间，点击图片可以放大查看。</p>
+                    <div style="display: flex; align-items: center; margin-top: 15px; gap: 10px;">
+                        <div style="width: 30px; height: 30px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">56</div>
+                        <span>张照片记录我们的青春</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-grid" id="galleryContainer">
+                    <!-- 图片将通过JS动态生成 -->
+                </div>
+            </section>
+            
+            <!-- 人物回忆页面 -->
+            <section id="members" class="page">
+                <h2 class="page-title">人物回忆</h2>
+                
+                <div class="card">
+                    <p>这里是我们234班全体成员的名单</p>
+                </div>
+                
+                <div class="members-container">
+                    <!-- 成员卡片将通过JS动态生成 -->
+                </div>
+            </section>
+            
+            <!-- 逐梦远航页面 -->
+            <section id="wishes" class="page">
+                <h2 class="page-title">逐梦远航</h2>
+                
+                <div class="card">
+                    <p>毕业不是终点，而是新的起点。在这里，同学们写下了对未来的期许和祝福。</p>
+                </div>
+                
+                <div class="wishes-container">
+                    <div class="wish-card">
+                        <div class="wish-content">
+                            三年时光匆匆而过，留下的是满满的回忆和珍贵的友谊。愿大家前程似锦，未来可期！无论走到哪里，都不要忘记234班这个温暖的大家庭。
+                        </div>
+                        <div class="wish-author">—— 王梓钧</div>
+                    </div>
+                    
+                    <div class="wish-card">
+                        <div class="wish-content">
+                            青春不散场，梦想正启航。愿我们都能成为自己想成为的人，在各自的领域发光发热。十年后，再相聚时，希望我们都能骄傲地说：我做到了！
+                        </div>
+                        <div class="wish-author">—— 不愿意透露姓名的同学</div>
+                    </div>
+                    
+                    <div class="wish-card">
+                        <div class="wish-content">
+                            感谢三年来老师们的谆谆教诲和同学们的陪伴支持。毕业不是结束，而是新的开始。愿我们带着勇气和智慧，在人生的舞台上绽放光彩！
+                        </div>
+                        <div class="wish-author">—— 不愿意透露姓名的同学</div>
+                    </div>
+                    
+                    <div class="wish-card">
+                        <div class="wish-content">
+                            三年的点点滴滴将成为我生命中最珍贵的记忆。愿我们都能保持初心，勇敢追梦。无论未来遇到什么困难，都要记得：234班永远是你的后盾！
+                        </div>
+                        <div class="wish-author">—— 不愿意透露姓名的同学</div>
+                    </div>
+                    
+                    <div class="wish-card">
+                        <div class="wish-content">
+                            从青涩到成熟，我们共同成长。愿未来的日子里，我们都能活成自己想要的模样。毕业快乐！友谊长存！
+                        </div>
+                        <div class="wish-author">—— 不愿意透露姓名的同学</div>
+                    </div>
+                    
+                    <div class="wish-card">
+                        <div class="wish-content">
+                            初中三年，感谢有你们。愿此去前程似锦，再相逢依旧如故。让我们各自努力，顶峰相见！
+                        </div>
+                        <div class="wish-author">—— 不愿意透露姓名的同学</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 毕业交流页面 -->
+            <section id="forum" class="page">
+                <h2 class="page-title">毕业交流</h2>
+                
+                <div class="comments-container">
+                    <div class="announcement">
+                        <h3><i class="fas fa-bullhorn"></i> 留言区公告</h3>
+                        <p>欢迎来到这个网站，这个板块给大家交流使用，但请遵守以下守则：</p>
+                        <ul>
+                            <li>不得冒充他人发言，否则删评；</li>
+                            <li>不得在这里当乐子人瞎聊，否则删评；</li>
+                            <li>不得使用色情、暴力等违禁词汇；</li>
+                            <li>不得作出其它有违公序良俗，有损网站交流秩序的行为。</li>
+                        </ul>
+                        <p>以上款目最终解释权归网站所有者所有。</p>
+                        <p style="margin-top: 10px; font-weight: 500; color: var(--accent);">好啦，现在大家就尽情聊吧。</p>
+                    </div>
+                    
+                    <div class="comment-form">
+                        <h3>发表留言</h3>
+                        <div class="form-group">
+                            <textarea id="commentText" placeholder="写下你的毕业感言或祝福..."></textarea>
+                        </div>
+                        <button id="submitComment">发布留言</button>
+                    </div>
+                    
+                    <div class="comment-list" id="commentList">
+                        <!-- 评论将通过JS动态生成 -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo" style="justify-content: center; margin-bottom: 15px;">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>2025届234班毕业纪念</span>
+                </div>
+                <p>珍藏青春记忆，祝福美好未来</p>
+                <div class="copyright">
+                    © 2025 234班毕业纪念网站 | 设计制作：王梓钧
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 登录模态框 -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-modal-content">
+            <div class="login-modal-header">
+                <h3>用户登录</h3>
+                <button class="login-close-modal">&times;</button>
+            </div>
+            <div class="login-modal-body">
+                <div class="form-group">
+                    <label for="username">姓名</label>
+                    <input type="text" id="username" placeholder="请输入您的姓名">
+                </div>
+                <div id="loginMessage" style="color: #e53e3e; margin-bottom: 15px; display: none;"></div>
+            </div>
+            <div class="login-modal-footer">
+                <button class="login-btn" id="confirmLogin">登录</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 图片查看模态框 -->
+    <div class="image-modal" id="imageModal">
+        <button class="close-modal">&times;</button>
+        <button class="nav-arrow prev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="modal-content">
+            <img class="modal-image" id="modalImage" alt="毕业相册图片">
+        </div>
+        <button class="nav-arrow next">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="image-info" id="imageInfo"></div>
+    </div>
+
+    <script>
+        // 更新后的班级成员数据
+        const classMembers = [
+            { name: "王梓钧", role: "班长 轮值纪委 数学课代表", isAdmin: false },
+            { name: "牛悦嘉", role: "副班长 轮值纪委 政治课代表 化学课代表", isAdmin: false },
+            { name: "王若兮", role: "学习委员 轮值纪委", isAdmin: false },
+            { name: "王岍沐", role: "卫生委员 英语课代表", isAdmin: false },
+            { name: "张家语", role: "卫生委员 历史课代表", isAdmin: false },
+            { name: "吴文蕊", role: "语文课代表", isAdmin: false },
+            { name: "李家乐", role: "化学课代表", isAdmin: false },
+            { name: "杨涵予", role: "生物课代表", isAdmin: false },
+            { name: "牛晨坤", role: "地理课代表", isAdmin: false },
+            { name: "王梦涵", role: "历史课代表", isAdmin: false },
+            { name: "安梦洁", role: "化学课代表", isAdmin: false },
+            { name: "金钰莹", role: "化学课代表", isAdmin: false },
+            { name: "杨子昌", role: "", isAdmin: false },
+            { name: "赵予熙", role: "", isAdmin: false },
+            { name: "马梓淩", role: "", isAdmin: false },
+            { name: "彭佳豪", role: "", isAdmin: false },
+            { name: "耿榆婷", role: "", isAdmin: false },
+            { name: "黄波文", role: "", isAdmin: false },
+            { name: "胡宇轩", role: "", isAdmin: false },
+            { name: "赵瑞卿", role: "", isAdmin: false },
+            { name: "赵欣怡", role: "", isAdmin: false },
+            { name: "朱逸璇", role: "", isAdmin: false },
+            { name: "武梦圆", role: "", isAdmin: false },
+            { name: "雷柯馨", role: "", isAdmin: false },
+            { name: "梁铭扬", role: "", isAdmin: false },
+            { name: "薛玉臻", role: "", isAdmin: false },
+            { name: "任淑蔓", role: "", isAdmin: false },
+            { name: "何旭杰", role: "", isAdmin: false },
+            { name: "盖梦涛", role: "", isAdmin: false },
+            { name: "白子文", role: "", isAdmin: false },
+            { name: "刘佳妮", role: "", isAdmin: false },
+            { name: "张钰璇", role: "", isAdmin: false },
+            { name: "化漾文", role: "", isAdmin: false },
+            { name: "王青艳", role: "", isAdmin: false },
+            { name: "郭宇帆", role: "", isAdmin: false },
+            { name: "王旭东", role: "", isAdmin: false },
+            { name: "闫筱磊", role: "", isAdmin: false },
+            { name: "高靖茹", role: "", isAdmin: false },
+            { name: "侯信鹏", role: "", isAdmin: false },
+            { name: "琚可馨", role: "", isAdmin: false },
+            { name: "张潺耀", role: "", isAdmin: false },
+            { name: "曹梦旭", role: "", isAdmin: false }
+        ];
+
+        // 图片数据
+        const totalImages = 56;
+        let currentImageIndex = 0;
+        
+        // 初始化相册
+        function initGallery() {
+            const galleryContainer = document.getElementById('galleryContainer');
+            galleryContainer.innerHTML = '';
+            
+            for (let i = 1; i <= totalImages; i++) {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.dataset.index = i - 1;
+                
+                galleryItem.innerHTML = `
+                    <img src="Image/${i}.jpg" alt="毕业照片 ${i}" loading="lazy">
+                    <div class="image-counter">${i}</div>
+                `;
+                
+                galleryItem.addEventListener('click', () => openImageModal(i - 1));
+                galleryContainer.appendChild(galleryItem);
+            }
+        }
+        
+        // 打开图片模态框
+        function openImageModal(index) {
+            currentImageIndex = index;
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const imageInfo = document.getElementById('imageInfo');
+            
+            modalImage.src = `Image/${index + 1}.jpg`;
+            imageInfo.textContent = `照片 ${index + 1} / ${totalImages}`;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // 关闭图片模态框
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // 切换图片
+        function navigateImage(direction) {
+            if (direction === 'prev') {
+                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            } else {
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+            }
+            
+            const modalImage = document.getElementById('modalImage');
+            const imageInfo = document.getElementById('imageInfo');
+            
+            modalImage.src = `Image/${currentImageIndex + 1}.jpg`;
+            imageInfo.textContent = `照片 ${currentImageIndex + 1} / ${totalImages}`;
+        }
+
+        // 页面切换功能
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // 更新活动链接
+                document.querySelectorAll('.nav-links a').forEach(a => {
+                    a.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // 显示对应页面
+                const pageId = this.getAttribute('data-page');
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
+                });
+                document.getElementById(pageId).classList.add('active');
+                
+                // 滚动到页面顶部
+                window.scrollTo(0, 0);
+            });
+        });
+
+        // 主题切换功能
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const icon = this.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // 检查本地存储中的主题设置
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.querySelector('i').classList.remove('fa-moon');
+            themeToggle.querySelector('i').classList.add('fa-sun');
+        }
+
+        // 登录功能
+        const loginBtn = document.getElementById('loginBtn');
+        const loginModal = document.getElementById('loginModal');
+        const closeModal = document.querySelector('.login-close-modal');
+        const confirmLogin = document.getElementById('confirmLogin');
+        
+        loginBtn.addEventListener('click', function() {
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser) {
+                // 如果已登录，显示退出选项
+                if (confirm(`当前用户: ${currentUser}\n\n是否要退出登录？`)) {
+                    localStorage.removeItem('currentUser');
+                    updateUserState();
+                }
+            } else {
+                // 显示登录模态框
+                loginModal.classList.add('active');
+            }
+        });
+        
+        closeModal.addEventListener('click', function() {
+            loginModal.classList.remove('active');
+        });
+        
+        confirmLogin.addEventListener('click', function() {
+            const username = document.getElementById('username').value.trim();
+            const message = document.getElementById('loginMessage');
+            
+            if (!username) {
+                message.textContent = "请输入您的姓名";
+                message.style.display = 'block';
+                return;
+            }
+            
+            // 检查是否为班级成员或管理员
+            const isMember = classMembers.some(member => member.name === username);
+            const isAdmin = username === "admin";
+            
+            if (isMember || isAdmin) {
+                localStorage.setItem('currentUser', username);
+                loginModal.classList.remove('active');
+                updateUserState();
+            } else {
+                message.textContent = "您不是班级成员，请输入正确的姓名";
+                message.style.display = 'block';
+            }
+        });
+
+        // 更新用户状态显示
+        function updateUserState() {
+            const currentUser = localStorage.getItem('currentUser');
+            const userBtn = document.getElementById('loginBtn');
+            
+            if (currentUser) {
+                userBtn.innerHTML = `<i class="fas fa-user"></i> ${currentUser} (退出)`;
+            } else {
+                userBtn.innerHTML = `<i class="fas fa-user"></i> 登录`;
+            }
+        }
+
+        // 初始化成员列表
+        function renderMembers() {
+            const container = document.querySelector('.members-container');
+            container.innerHTML = '';
+            
+            classMembers.forEach(member => {
+                const card = document.createElement('div');
+                card.className = 'member-card';
+                
+                // 获取名字首字母作为头像
+                const initials = member.name.split('').filter(char => 
+                    char.charCodeAt(0) >= 19968 && char.charCodeAt(0) <= 40869
+                ).slice(0, 2).join('') || member.name.charAt(0);
+                
+                card.innerHTML = `
+                    <div class="member-avatar">${initials}</div>
+                    <div class="member-info">
+                        <div class="member-name">${member.name}</div>
+                        <div class="member-role">${member.role}</div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // 评论功能
+        const commentForm = document.getElementById('submitComment');
+        const commentText = document.getElementById('commentText');
+        const commentList = document.getElementById('commentList');
+        
+        // 初始化评论
+        function initComments() {
+            let comments = JSON.parse(localStorage.getItem('comments')) || [];
+            
+            // 如果没有评论，添加一个示例评论
+            if (comments.length === 0) {
+                comments = [
+                    {
+                        id: Date.now(),
+                        author: "王梓钧",
+                        content: "欢迎大家来到我们的毕业纪念网站！在这里留下你的祝福和回忆吧！",
+                        timestamp: new Date().toISOString(),
+                        isTop: true,
+                        replies: []
+                    }
+                ];
+                localStorage.setItem('comments', JSON.stringify(comments));
+            }
+            
+            renderComments(comments);
+        }
+        
+        // 渲染评论
+        function renderComments(comments) {
+            commentList.innerHTML = '';
+            
+            if (comments.length === 0) {
+                commentList.innerHTML = '<div class="card" style="text-align: center; padding: 30px;">暂无留言，快来发表第一条吧！</div>';
+                return;
+            }
+            
+            // 分离置顶评论和普通评论
+            const topComments = comments.filter(c => c.isTop);
+            const normalComments = comments.filter(c => !c.isTop);
+            
+            // 按时间倒序排列普通评论
+            normalComments.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            // 合并评论（置顶在前）
+            const sortedComments = [...topComments, ...normalComments];
+            
+            sortedComments.forEach(comment => {
+                const commentEl = document.createElement('div');
+                commentEl.className = `comment ${comment.isTop ? 'top-comment' : ''}`;
+                commentEl.dataset.id = comment.id;
+                
+                // 获取名字首字母作为头像
+                const initials = comment.author.split('').filter(char => 
+                    char.charCodeAt(0) >= 19968 && char.charCodeAt(0) <= 40869
+                ).slice(0, 2).join('') || comment.author.charAt(0);
+                
+                const currentUser = localStorage.getItem('currentUser');
+                const isAdmin = currentUser === "admin";
+                const isCommentAuthor = currentUser === comment.author;
+                
+                commentEl.innerHTML = `
+                    <div class="comment-header">
+                        <div class="comment-avatar">${initials}</div>
+                        <div class="comment-author">${comment.author}</div>
+                        <div class="comment-time">${formatDate(comment.timestamp)}</div>
+                    </div>
+                    <div class="comment-content">${comment.content}</div>
+                    <div class="admin-controls">
+                        ${(isAdmin || isCommentAuthor) ? `
+                            <button class="delete-comment" data-id="${comment.id}">
+                                <i class="fas fa-trash"></i> 删除
+                            </button>
+                        ` : ''}
+                        ${isAdmin ? `
+                            <button class="edit-comment" data-id="${comment.id}">
+                                <i class="fas fa-edit"></i> 编辑
+                            </button>
+                            <button class="toggle-top-comment" data-id="${comment.id}">
+                                <i class="fas fa-thumbtack"></i> ${comment.isTop ? '取消置顶' : '置顶'}
+                            </button>
+                        ` : ''}
+                    </div>
+                    <div class="reply-form">
+                        <textarea placeholder="回复 ${comment.author}..."></textarea>
+                        <button class="submit-reply">回复</button>
+                    </div>
+                    ${comment.replies && comment.replies.length > 0 ? `
+                        <div class="reply-list">
+                            ${comment.replies.map(reply => `
+                                <div class="reply-item" data-id="${reply.id}">
+                                    <div class="reply-avatar">${getInitials(reply.author)}</div>
+                                    <div class="reply-content">
+                                        <div class="reply-header">
+                                            <div class="reply-author">${reply.author}</div>
+                                            <div class="reply-time">${formatDate(reply.timestamp)}</div>
+                                        </div>
+                                        <div class="reply-text">${reply.content}</div>
+                                        <div class="reply-controls">
+                                            ${(isAdmin || currentUser === reply.author) ? `
+                                                <button class="delete-reply" data-comment-id="${comment.id}" data-reply-id="${reply.id}">删除</button>
+                                            ` : ''}
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
+                `;
+                commentList.appendChild(commentEl);
+            });
+            
+            // 添加删除评论事件
+            document.querySelectorAll('.delete-comment').forEach(button => {
+                button.addEventListener('click', function() {
+                    const commentId = this.getAttribute('data-id');
+                    deleteComment(commentId);
+                });
+            });
+            
+            // 添加编辑评论事件
+            document.querySelectorAll('.edit-comment').forEach(button => {
+                button.addEventListener('click', function() {
+                    const commentId = this.getAttribute('data-id');
+                    editComment(commentId);
+                });
+            });
+            
+            // 添加置顶评论事件
+            document.querySelectorAll('.toggle-top-comment').forEach(button => {
+                button.addEventListener('click', function() {
+                    const commentId = this.getAttribute('data-id');
+                    toggleTopComment(commentId);
+                });
+            });
+            
+            // 添加回复事件
+            document.querySelectorAll('.submit-reply').forEach(button => {
+                button.addEventListener('click', function() {
+                    const commentEl = this.closest('.comment');
+                    const commentId = commentEl.dataset.id;
+                    const textarea = commentEl.querySelector('.reply-form textarea');
+                    const content = textarea.value.trim();
+                    
+                    if (!content) {
+                        alert('请输入回复内容');
+                        return;
+                    }
+                    
+                    addReply(commentId, content);
+                    textarea.value = '';
+                });
+            });
+            
+            // 添加删除回复事件
+            document.querySelectorAll('.delete-reply').forEach(button => {
+                button.addEventListener('click', function() {
+                    const commentId = this.getAttribute('data-comment-id');
+                    const replyId = this.getAttribute('data-reply-id');
+                    deleteReply(commentId, replyId);
+                });
+            });
+        }
+        
+        // 添加评论
+        commentForm.addEventListener('click', function() {
+            const currentUser = localStorage.getItem('currentUser');
+            if (!currentUser) {
+                alert('请先登录后再发表留言');
+                loginModal.classList.add('active');
+                return;
+            }
+            
+            const content = commentText.value.trim();
+            if (!content) {
+                alert('请输入留言内容');
+                return;
+            }
+            
+            const comments = JSON.parse(localStorage.getItem('comments')) || [];
+            const newComment = {
+                id: Date.now(),
+                author: currentUser,
+                content: content,
+                timestamp: new Date().toISOString(),
+                isTop: false,
+                replies: []
+            };
+            
+            comments.push(newComment);
+            localStorage.setItem('comments', JSON.stringify(comments));
+            
+            commentText.value = '';
+            renderComments(comments);
+        });
+        
+        // 删除评论
+        function deleteComment(commentId) {
+            if (!confirm('确定要删除这条留言吗？')) return;
+            
+            const comments = JSON.parse(localStorage.getItem('comments')) || [];
+            const newComments = comments.filter(c => c.id != commentId);
+            localStorage.setItem('comments', JSON.stringify(newComments));
+            renderComments(newComments);
+        }
+        
+        // 编辑评论
+        function editComment(commentId) {
+            const comments = JSON.parse(localStorage.getItem('comments')) || [];
+            const comment = comments.find(c => c.id == commentId);
+            
+            if (!comment) return;
+            
+            const newContent = prompt('修改评论内容：', comment.content);
+            if (newContent === null || newContent.trim() === '') return;
+            
+            comment.content = newContent.trim();
+            localStorage.setItem('comments', JSON.stringify(comments));
+            renderComments(comments);
+        }
+        
+        // 置顶/取消置顶评论
+        function toggleTopComment(commentId) {
+            const comments = JSON.parse(localStorage.getItem('comments')) || [];
+            const comment = comments.find(c => c.id == commentId);
+            
+            if (!comment) return;
+            
+            comment.isTop = !comment.isTop;
+            localStorage.setItem('comments', JSON.stringify(comments));
+            renderComments(comments);
+        }
+        
+        // 添加回复
+        function addReply(commentId, content) {
+            const currentUser = localStorage.getItem('currentUser');
+            if (!currentUser) {
+                alert('请先登录后再回复');
+                loginModal.classList.add('active');
+                return;
+            }
+            
+            const comments = JSON.parse(localStorage.getItem('comments')) || [];
+            const comment = comments.find(c => c.id == commentId);
+            
+            if (!comment) return;
+            
+            if (!comment.replies) comment.replies = [];
+            
+            comment.replies.push({
+                id: Date.now(),
+                author: currentUser,
+                content: content,
+                timestamp: new Date().toISOString()
+            });
+            
+            localStorage.setItem('comments', JSON.stringify(comments));
+            renderComments(comments);
+        }
+        
+        // 删除回复
+        function deleteReply(commentId, replyId) {
+            if (!confirm('确定要删除这条回复吗？')) return;
+            
+            const comments = JSON.parse(localStorage.getItem('comments')) || [];
+            const comment = comments.find(c => c.id == commentId);
+            
+            if (!comment || !comment.replies) return;
+            
+            comment.replies = comment.replies.filter(r => r.id != replyId);
+            localStorage.setItem('comments', JSON.stringify(comments));
+            renderComments(comments);
+        }
+        
+        // 获取名字首字母
+        function getInitials(name) {
+            return name.split('').filter(char => 
+                char.charCodeAt(0) >= 19968 && char.charCodeAt(0) <= 40869
+            ).slice(0, 2).join('') || name.charAt(0);
+        }
+        
+        // 格式化日期
+        function formatDate(isoString) {
+            const date = new Date(isoString);
+            return `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+        }
+
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', function() {
+            updateUserState();
+            renderMembers();
+            initComments();
+            initGallery();
+            
+            // 添加图片模态框事件
+            document.querySelector('.close-modal').addEventListener('click', closeImageModal);
+            document.querySelector('.prev').addEventListener('click', () => navigateImage('prev'));
+            document.querySelector('.next').addEventListener('click', () => navigateImage('next'));
+            
+            // 添加键盘导航
+            document.addEventListener('keydown', (e) => {
+                const modal = document.getElementById('imageModal');
+                if (!modal.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') {
+                    closeImageModal();
+                } else if (e.key === 'ArrowLeft') {
+                    navigateImage('prev');
+                } else if (e.key === 'ArrowRight') {
+                    navigateImage('next');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
